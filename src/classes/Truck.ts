@@ -19,6 +19,7 @@ class Truck extends Vehicle{
   topSpeed: number;
   wheels: Wheel[];
   towingCapacity: number;
+  // towingCapacity: number;
 
   // TODO: Create a constructor that accepts the properties of the Truck class
     // TODO: The constructor should call the constructor of the parent class, Vehicle
@@ -32,7 +33,8 @@ class Truck extends Vehicle{
       year: number,
       weight: number,
       topSpeed: number,
-      wheels: Wheel[]
+      wheels: Wheel[],
+      towingCapacity: number
     ) {
       super();
 
@@ -43,6 +45,7 @@ class Truck extends Vehicle{
       this.year = year;
       this.weight = weight;
       this.topSpeed = topSpeed;
+      this.towingCapacity = towingCapacity;
 
       if (wheels.length !== 4) {
         this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
@@ -57,6 +60,11 @@ class Truck extends Vehicle{
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
     // TODO: If it is, log that the vehicle is being towed
     // TODO: If it is not, log that the vehicle is too heavy to be towed
+    if ((vehicle instanceof Car) && (this.towingCapacity > vehicle.weight)) {
+      console.log('The vehicle is being towed.');
+    } else {
+      console.log('The vehicle is too heavy to be towed.');
+    }
   }
 
   // TODO: Override the printDetails method from the Vehicle class
