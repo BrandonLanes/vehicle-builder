@@ -304,6 +304,8 @@ class Cli {
       });
   }
 
+  wheelie(motorbike:any): void{}
+
   // method to perform actions on a vehicle
   performActions(): void {
     inquirer
@@ -393,19 +395,23 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
               this.findVehicleToTow(this.vehicles[i]);
-              return;
             }
           }
         } else if (answers.action === 'Wheelie') {
+          let selectedMotorbike: Motorbike | undefined
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
-              this.wheelie(this.vehicles[i]);
-              return;
+              selectedMotorbike = this.vehicles[i] as Motorbike;
+              // console.log('Motorbike this.make this.model is doing a wheelie!');
             }
-        }
+          }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-
-        else if (answers.action === 'Select or create another vehicle') {
+          if (selectedMotorbike) {
+            selectedMotorbike.wheelie()
+          } else {
+            console.log('This is not a motorbike.')
+          }
+        } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
           this.startCli();
           return;

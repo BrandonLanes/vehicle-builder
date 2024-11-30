@@ -260,6 +260,7 @@ class Cli {
             // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
         });
     }
+    wheelie(motorbike) { }
     // method to perform actions on a vehicle
     performActions() {
         inquirer
@@ -281,7 +282,7 @@ class Cli {
                     'Select or create another vehicle',
                     'Exit',
                     'Tow',
-                    'Perform wheelie',
+                    'Wheelie',
                 ],
             },
         ])
@@ -356,11 +357,25 @@ class Cli {
                 for (let i = 0; i < this.vehicles.length; i++) {
                     if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
                         this.findVehicleToTow(this.vehicles[i]);
-                        return;
                     }
                 }
             }
-            // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+            else if (answers.action === 'Wheelie') {
+                let selectedMotorbike;
+                for (let i = 0; i < this.vehicles.length; i++) {
+                    if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
+                        selectedMotorbike = this.vehicles[i];
+                        // console.log('Motorbike this.make this.model is doing a wheelie!');
+                    }
+                }
+                // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
+                if (selectedMotorbike) {
+                    selectedMotorbike.wheelie();
+                }
+                else {
+                    console.log('This is not a motorbike.');
+                }
+            }
             else if (answers.action === 'Select or create another vehicle') {
                 // start the cli to return to the initial prompt if the user wants to select or create another vehicle
                 this.startCli();
