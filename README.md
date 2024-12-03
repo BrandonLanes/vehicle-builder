@@ -32,7 +32,7 @@ various actions. These include towing other vehicles with a truck, doing a wheel
     <br />
     <br />
     <!-- TODO: Edit deployment link -->
-    <a href="***add link to video here***">View Demo</a>
+    <a href="https://app.screencastify.com/v2/manage/videos/MizBihIubolXa4FFqKmC">View Demo</a>
     ·
     <a href="https://github.com/BrandonLanes/vehicle-builder/issues">Report Bug</a>
     ·
